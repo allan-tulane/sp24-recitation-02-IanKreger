@@ -3,52 +3,30 @@ CMPS 2200  Recitation 2
 """
 
 ### the only imports needed are here
+from types import prepare_class
 import tabulate
 import time
 ###
 
 def simple_work_calc(n, a, b):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + n
-
-	Params:
-	n......input integer
-	a......branching factor of recursion tree
-	b......input split factor
-
-	Returns: the value of W(n).
-	"""
-	# TODO
-	pass
+  if n == 0:
+    return 0
+  else:
+    return a * simple_work_calc(n//b,a,b) + n
+pass
 
 def work_calc(n, a, b, f):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
-
-	Params:
-	n......input integer
-	a......branching factor of recursion tree
-	b......input split factor
-	f......a function that takes an integer and returns 
-           the work done at each node 
-
-	Returns: the value of W(n).
-	"""
-	# TODO
-	pass
-
+  if n==0:
+    return 0
+  else:
+    return a * work_calc(n//b, a, b, f) + f(n)
+pass
+    
 def span_calc(n, a, b, f):
-	"""Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
-
-	Params:
-	n......input integer
-	a......branching factor of recursion tree
-	b......input split factor
-	f......a function that takes an integer and returns 
-           the work done at each node 
-
-	Returns: the value of W(n).
-	"""
-	# TODO
-	pass
+  if n==0:
+    return 0
+  else:
+    return span_calc(n//b, a, b, f) + f(n)
 
 
 
